@@ -1,5 +1,39 @@
-#Importem json per tal de poder treballar amb ell
+#Importem json
 import json
+#Importem la  classe car de la carpeta Integrant_A
+from Integrant_A.Car import Car
+
+#Fem una llista amb 5 instancies
+cars = [
+    Car("Opel", "Corsa", "2006 KKG", "Gris"),
+    Car("Toyota", "Verso", "2007 KKG", "Blanc"),
+    Car("Seat", "Ibiza", "2008 KKG", "Vermell"),
+    Car("BMW", "A4", "2009 KKG", "Blau"),
+    Car("Nissan", "Si", "2001 KKG", "Rosa")
+    ]
+
+#Importem la  classe book de la carpeta Integrant_A
+from Integrant_A.book import book
+
+#Fem una llista amb 5 instancies
+books = [
+    book("Lazarillo de tormes", "Castellano", "Alfonso de Valdés", "325", "1554", "novela picaresca"),
+    book("Tirat lo Blanc", "Catala", "Joanot Martorell", "325", "1534", "novela"),
+    book("Control de oleadas", "Castellano", "Jorge Werlyb", "325", "2019", "novela picaresca"),
+    book("Niño con el pijama de rayas", "Castellano", "John Boyne", "325", "2006", "drama total"),
+    book("Jacinto y sus flores", "Castellano", "Ramon Font", "2", "2025", "biblia en verso"),
+]
+
+#Convertim les llistes a diccionaris
+cars_list = [c.to_dict() for c in cars]
+books_list = [b.to_dict() for b in books]
+
+#Guardem les llistes en un objecte contenidor
+data = {"cars":cars_list, "books":books_list}
+
+#Guardem el objecte contenidor en un arxiu .json
+with open("jsonAPI/a.json",'w') as file:
+    json.dump(data, file)
 
 #Importem les nostres classes i creem cinc instancies de cada una
 from Integrant_B.Cat import Cat
@@ -26,11 +60,11 @@ escoles = [
 gats_list = [g.to_dict() for g in gats]
 escoles_list = [e.to_dict() for e in escoles]
 
-#Emmagatzem les llistes a un objecte contenidor en forma diccionari
+#Emmagatzemem les llistes a un objecte contenidor en forma diccionari
 data = {"gats":gats_list, "escoles":escoles_list}
 
-#Emmagatzem l'objecte contenidor en un arxiu
-with open("jsonAPI2/b.json",'w') as file:
+#Emmagatzemem l'objecte contenidor en un arxiu
+with open("jsonAPI/b.json",'w') as file:
     json.dump(data, file)
 
 
